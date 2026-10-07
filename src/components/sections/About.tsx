@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { IconCheck } from "@/components/ui/Icons";
 
@@ -73,16 +72,17 @@ export function About() {
           className="grid gap-6 sm:grid-cols-[1fr_0.95fr] sm:items-stretch"
         >
           <div className="relative overflow-hidden rounded-2xl border border-[rgba(70,170,255,0.25)] shadow-[0_0_40px_rgba(22,155,255,0.12)]">
-            <div className="relative aspect-[4/5]">
-              <Image
-                src="/images/about-portrait.jpg"
-                alt="Dimitris Lykos — Ηλεκτρολόγος Μηχανικός"
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 40vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020914] via-[rgba(2,9,20,0.25)] to-[rgba(22,155,255,0.12)] mix-blend-multiply" />
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(22,155,255,0.15),transparent_45%)]" />
+            <div className="relative flex aspect-[4/5] flex-col items-center justify-center bg-[radial-gradient(circle_at_50%_30%,rgba(22,155,255,0.22),transparent_55%),linear-gradient(180deg,#081827_0%,#020914_100%)] p-6 text-center">
+              <div className="hero-grid absolute inset-0 opacity-40" aria-hidden />
+              <div className="relative grid h-28 w-28 place-items-center rounded-full border border-[rgba(70,170,255,0.45)] bg-[rgba(10,28,45,0.85)] shadow-[0_0_40px_rgba(22,155,255,0.35)]">
+                <span className="font-display text-3xl font-bold tracking-[0.12em] text-ink">DL</span>
+              </div>
+              <p className="relative mt-6 font-display text-xl font-semibold text-ink">Dimitris Lykos</p>
+              <p className="relative mt-1 text-sm text-muted">Ηλεκτρολόγος Μηχανικός</p>
+              <p className="relative mt-4 max-w-[14rem] text-xs leading-relaxed text-muted/80">
+                Επαγγελματικό πορτρέτο — προσθέστε πραγματική φωτογραφία από το Admin όταν είναι διαθέσιμη.
+              </p>
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#020914] to-transparent" />
             </div>
           </div>
 

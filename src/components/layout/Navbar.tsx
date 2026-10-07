@@ -15,14 +15,21 @@ export function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
-      const sections = NAV_LINKS.map((l) => l.href.replace("#", ""));
-      for (const id of [...sections].reverse()) {
+      const offset = 140;
+      let current = "#home";
+      let bestTop = Number.NEGATIVE_INFINITY;
+
+      for (const link of NAV_LINKS) {
+        const id = link.href.replace("#", "");
         const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= 140) {
-          setActive(`#${id}`);
-          break;
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top;
+        if (top <= offset && top > bestTop) {
+          bestTop = top;
+          current = link.href;
         }
       }
+      setActive(current);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -46,8 +53,15 @@ export function Navbar() {
             : "bg-transparent",
         )}
       >
-        <div className="container-x flex h-[72px] items-center justify-between gap-4 lg:h-[80px]">
-          <Logo />
+        <div className="container-x flex h-[72px] items-center justify-between gap-3 lg:h-[80px]">
+          <div className="min-w-0 shrink">
+            <span className="md:hidden">
+              <Logo compact />
+            </span>
+            <span className="hidden md:inline">
+              <Logo />
+            </span>
+          </div>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Κύρια πλοήγηση">
             {NAV_LINKS.map((link) => {
@@ -76,7 +90,7 @@ export function Navbar() {
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="tel:6948591717"
-              className="btn-outline hidden min-h-11 gap-2 px-4 text-sm sm:inline-flex"
+              className="hidden min-h-11 items-center gap-2 rounded-full border border-[rgba(70,170,255,0.4)] px-4 text-sm text-ink transition hover:border-electric hover:bg-[rgba(22,155,255,0.1)] sm:inline-flex"
               aria-label="Κλήση στο 694 8591717"
             >
               <IconPhone className="text-electric-bright" />
@@ -85,7 +99,7 @@ export function Navbar() {
             <a
               href="tel:6948591717"
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(70,170,255,0.4)] text-electric-bright sm:hidden"
-              aria-label="Κλήση"
+              aria-label="Κλήση στο 694 8591717"
             >
               <IconPhone />
             </a>
