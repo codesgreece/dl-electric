@@ -65,9 +65,19 @@ export function Footer() {
       </div>
 
       <div className="border-t border-[rgba(70,170,255,0.1)]">
-        <div className="container-x flex flex-col gap-2 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-x flex flex-col gap-4 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 DL Electric. Όλα τα δικαιώματα διατηρούνται.</p>
-          <p>Ηλεκτρολογικές λύσεις χωρίς όρια.</p>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-muted">Φτιάχτηκε από</span>
+            <a
+              href="https://nexusdevstudio.gr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-9 items-center rounded-full border border-[rgba(70,170,255,0.28)] bg-[rgba(8,24,39,0.65)] px-4 text-sm font-semibold text-ink transition hover:border-electric hover:bg-[rgba(22,155,255,0.1)] hover:text-electric-bright"
+            >
+              NexusDevStudio Greece
+            </a>
+          </div>
         </div>
       </div>
     </footer>
