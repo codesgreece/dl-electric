@@ -18,7 +18,9 @@ export const metadata: Metadata = {
   title: "DL Electric | Ηλεκτρολογικές Λύσεις & Εγκαταστάσεις",
   description:
     "DL Electric by Dimitris Lykos. Ηλεκτρολογικές μελέτες, εγκαταστάσεις μέσης και υψηλής τάσης, smart home, CCTV και βιομηχανικά έργα με 22 χρόνια εμπειρίας.",
-  metadataBase: new URL(process.env.AUTH_URL || "http://localhost:3000"),
+  metadataBase: new URL(
+    process.env.AUTH_URL || process.env.NEXTAUTH_URL || "https://dl-electric.vercel.app",
+  ),
   openGraph: {
     title: "DL Electric | Ηλεκτρολογικές Λύσεις & Εγκαταστάσεις",
     description:
