@@ -70,61 +70,60 @@ async function main() {
     });
   }
 
-  const projectCount = await prisma.project.count();
-  if (projectCount === 0) {
-    await prisma.project.createMany({
-      data: [
-        {
-          title: "Υποσταθμός Μέσης Τάσης",
-          description: "Ολοκληρωμένη εγκατάσταση και συντήρηση υποσταθμού μέσης τάσης.",
-          category: ProjectCategory.HIGH_VOLTAGE,
-          imageUrl: "/images/project-voltage-1.jpg",
-          featured: true,
-          sortOrder: 1,
-        },
-        {
-          title: "Έξυπνη Κατοικία Αθήνα",
-          description: "Ολοκληρωμένο σύστημα smart home με αυτοματισμούς φωτισμού και ενέργειας.",
-          category: ProjectCategory.SMART_HOME,
-          imageUrl: "/images/project-smarthome-1.jpg",
-          featured: true,
-          sortOrder: 2,
-        },
-        {
-          title: "Βιομηχανική Εγκατάσταση",
-          description: "Ηλεκτρολογικές υποδομές για βιομηχανική μονάδα παραγωγής.",
-          category: ProjectCategory.INDUSTRIAL,
-          imageUrl: "/images/project-industrial-1.jpg",
-          featured: true,
-          sortOrder: 3,
-        },
-        {
-          title: "Σύστημα CCTV Επιχείρησης",
-          description: "Δίκτυο καμερών υψηλής ανάλυσης με απομακρυσμένη παρακολούθηση.",
-          category: ProjectCategory.CCTV,
-          imageUrl: "/images/project-cctv-1.jpg",
-          featured: false,
-          sortOrder: 4,
-        },
-        {
-          title: "Υψηλή Τάση — Δίκτυο Διανομής",
-          description: "Μελέτη και υλοποίηση δικτύου υψηλής τάσης.",
-          category: ProjectCategory.HIGH_VOLTAGE,
-          imageUrl: "/images/project-voltage-2.jpg",
-          featured: false,
-          sortOrder: 5,
-        },
-        {
-          title: "Premium Smart Residence",
-          description: "Εγκατάσταση έξυπνων συστημάτων σε πολυτελή κατοικία.",
-          category: ProjectCategory.SMART_HOME,
-          imageUrl: "/images/project-smarthome-2.jpg",
-          featured: true,
-          sortOrder: 6,
-        },
-      ],
-    });
-  }
+  // Replace gallery with real project photos (no placeholder samples).
+  await prisma.project.deleteMany();
+  await prisma.project.createMany({
+    data: [
+      {
+        title: "Διαμέρισμα — Υπνοδωμάτιο",
+        description: "Ηλεκτρολογική εγκατάσταση φωτισμού, θέσεων και παροχών σε σύγχρονο υπνοδωμάτιο.",
+        category: ProjectCategory.APARTMENTS,
+        imageUrl: "/images/apartment-01-bedroom.jpg",
+        featured: true,
+        sortOrder: 1,
+      },
+      {
+        title: "Διαμέρισμα — Φωτισμός σκάλας LED",
+        description: "Ενσωματωμένος φωτισμός βαθμίδων με LED για ασφάλεια και αρχιτεκτονικό αποτέλεσμα.",
+        category: ProjectCategory.APARTMENTS,
+        imageUrl: "/images/apartment-02-stairs-led.jpg",
+        featured: true,
+        sortOrder: 2,
+      },
+      {
+        title: "Διαμέρισμα — Οροφοφωτισμός",
+        description: "Πολυεπίπεδη οροφή με κρυφό φωτισμό, spots και γραμμικά φωτιστικά.",
+        category: ProjectCategory.APARTMENTS,
+        imageUrl: "/images/apartment-03-ceiling-lighting.jpg",
+        featured: true,
+        sortOrder: 3,
+      },
+      {
+        title: "Διαμέρισμα — Φωτιστικά σκάλας",
+        description: "Κυκλικά επιτοίχια φωτιστικά κατά μήκος σύγχρονης εσωτερικής σκάλας.",
+        category: ProjectCategory.APARTMENTS,
+        imageUrl: "/images/apartment-04-stairs-wall-lights.jpg",
+        featured: true,
+        sortOrder: 4,
+      },
+      {
+        title: "Διαμέρισμα — Κουζίνα",
+        description: "Ηλεκτρολογικές παροχές και φωτισμός σε σύγχρονη κουζίνα υψηλών προδιαγραφών.",
+        category: ProjectCategory.APARTMENTS,
+        imageUrl: "/images/apartment-05-kitchen.jpg",
+        featured: true,
+        sortOrder: 5,
+      },
+      {
+        title: "Διαμέρισμα — Σαλόνι & τραπεζαρία",
+        description: "Ολοκληρωμένη ηλεκτρολογική εγκατάσταση φωτισμού σε ανοιχτό χώρο διημέρευσης.",
+        category: ProjectCategory.APARTMENTS,
+        imageUrl: "/images/apartment-06-living-dining.jpg",
+        featured: true,
+        sortOrder: 6,
+      },
+    ],
+  });
 
   const certCount = await prisma.certification.count();
   if (certCount === 0) {

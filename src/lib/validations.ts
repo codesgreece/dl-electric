@@ -15,7 +15,7 @@ export const loginSchema = z.object({
 export const projectSchema = z.object({
   title: z.string().min(2),
   description: z.string().min(5),
-  category: z.enum(["HIGH_VOLTAGE", "SMART_HOME", "INDUSTRIAL", "CCTV"]),
+  category: z.enum(["HIGH_VOLTAGE", "SMART_HOME", "INDUSTRIAL", "CCTV", "APARTMENTS"]),
   imageUrl: z.string().min(1),
   featured: z.boolean().optional(),
   sortOrder: z.number().optional(),
