@@ -8,6 +8,7 @@ export const PROJECT_CATEGORY_LABELS: Record<ProjectCategory, string> = {
   INDUSTRIAL: "Βιομηχανικά Έργα",
   CCTV: "CCTV",
   APARTMENTS: "Διαμερίσματα",
+  SHOPS: "Καταστήματα",
 };
 
 export const NAV_LINKS = [

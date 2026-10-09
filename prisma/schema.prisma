@@ -23,6 +23,7 @@ enum ProjectCategory {
   INDUSTRIAL
   CCTV
   APARTMENTS
+  SHOPS
 }
 
 model Project {

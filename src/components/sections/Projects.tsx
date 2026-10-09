@@ -20,6 +20,7 @@ const filters: Array<{ key: "ALL" | ProjectCategory; label: string }> = [
   { key: "ALL", label: "Όλα" },
   { key: "APARTMENTS", label: "Διαμερίσματα" },
   { key: "HIGH_VOLTAGE", label: "Μέση/Υψηλή Τάση" },
+  { key: "SHOPS", label: "Καταστήματα" },
   { key: "SMART_HOME", label: "Smart Home" },
   { key: "INDUSTRIAL", label: "Βιομηχανικά Έργα" },
   { key: "CCTV", label: "CCTVs" },
