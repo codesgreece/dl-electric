@@ -26,11 +26,6 @@ export function Logo({ href = "/#home", compact = false, className }: Props) {
         <span className="font-display text-[0.95rem] font-semibold tracking-[0.14em] text-ink uppercase">
           DL Electric
         </span>
-        {!compact ? (
-          <span className="mt-1 text-[0.65rem] tracking-[0.08em] text-muted">
-            By Dimitris Lykos
-          </span>
-        ) : null}
       </span>
     </span>
   );

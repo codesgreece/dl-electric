@@ -1,4 +1,4 @@
-import { PrismaClient, ProjectCategory } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
@@ -70,60 +70,20 @@ async function main() {
     });
   }
 
-  const projectCount = await prisma.project.count();
-  if (projectCount === 0) {
-    await prisma.project.createMany({
-      data: [
-        {
-          title: "Υποσταθμός Μέσης Τάσης",
-          description: "Ολοκληρωμένη εγκατάσταση και συντήρηση υποσταθμού μέσης τάσης.",
-          category: ProjectCategory.HIGH_VOLTAGE,
-          imageUrl: "/images/project-voltage-1.jpg",
-          featured: true,
-          sortOrder: 1,
-        },
-        {
-          title: "Έξυπνη Κατοικία Αθήνα",
-          description: "Ολοκληρωμένο σύστημα smart home με αυτοματισμούς φωτισμού και ενέργειας.",
-          category: ProjectCategory.SMART_HOME,
-          imageUrl: "/images/project-smarthome-1.jpg",
-          featured: true,
-          sortOrder: 2,
-        },
-        {
-          title: "Βιομηχανική Εγκατάσταση",
-          description: "Ηλεκτρολογικές υποδομές για βιομηχανική μονάδα παραγωγής.",
-          category: ProjectCategory.INDUSTRIAL,
-          imageUrl: "/images/project-industrial-1.jpg",
-          featured: true,
-          sortOrder: 3,
-        },
-        {
-          title: "Σύστημα CCTV Επιχείρησης",
-          description: "Δίκτυο καμερών υψηλής ανάλυσης με απομακρυσμένη παρακολούθηση.",
-          category: ProjectCategory.CCTV,
-          imageUrl: "/images/project-cctv-1.jpg",
-          featured: false,
-          sortOrder: 4,
-        },
-        {
-          title: "Υψηλή Τάση — Δίκτυο Διανομής",
-          description: "Μελέτη και υλοποίηση δικτύου υψηλής τάσης.",
-          category: ProjectCategory.HIGH_VOLTAGE,
-          imageUrl: "/images/project-voltage-2.jpg",
-          featured: false,
-          sortOrder: 5,
-        },
-        {
-          title: "Premium Smart Residence",
-          description: "Εγκατάσταση έξυπνων συστημάτων σε πολυτελή κατοικία.",
-          category: ProjectCategory.SMART_HOME,
-          imageUrl: "/images/project-smarthome-2.jpg",
-          featured: true,
-          sortOrder: 6,
-        },
-      ],
-    });
+  // Replace gallery with real project photos (no placeholder samples).
+  const { GALLERY_PROJECTS } = await import("../src/lib/project-gallery");
+  await prisma.project.deleteMany();
+  for (const project of GALLERY_PROJECTS) {
+    await prisma.$executeRawUnsafe(
+      `INSERT INTO "Project" (id, title, description, category, "imageUrl", featured, "sortOrder", "createdAt", "updatedAt")
+       VALUES (gen_random_uuid()::text, $1, $2, $3::"ProjectCategory", $4, $5, $6, NOW(), NOW())`,
+      project.title,
+      project.description,
+      project.category,
+      project.imageUrl,
+      project.featured,
+      project.sortOrder,
+    );
   }
 
   const certCount = await prisma.certification.count();
