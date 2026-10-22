@@ -7,26 +7,24 @@ import { Logo } from "@/components/layout/Logo";
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function onSubmit(e: FormEvent) {
-    e.preventDefault();
+  async function onSubmit(event: FormEvent) {
+    event.preventDefault();
     setError("");
     setLoading(true);
 
     const result = await signIn("credentials", {
-      email,
-      password,
+      code,
       redirect: false,
     });
 
     setLoading(false);
 
     if (result?.error) {
-      setError("Μη έγκυρα στοιχεία σύνδεσης.");
+      setError("Λάθος κωδικός.");
       return;
     }
 
@@ -39,36 +37,22 @@ export default function AdminLoginPage() {
       <div className="glass glow-border w-full max-w-md rounded-2xl p-8">
         <div className="mb-8 flex flex-col items-center text-center">
           <Logo href="/" />
-          <h1 className="mt-6 font-display text-2xl font-semibold text-ink">Admin Login</h1>
-          <p className="mt-2 text-sm text-muted">Πρόσβαση μόνο για διαχειριστή</p>
+          <h1 className="mt-6 font-display text-2xl font-semibold text-ink">Admin</h1>
+          <p className="mt-2 text-sm text-muted">Κωδικός μόνο για ανέβασμα φωτογραφιών</p>
         </div>
 
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
-            <label htmlFor="admin-email" className="mb-1.5 block text-sm text-muted">
-              Email / Username
+            <label htmlFor="admin-code" className="mb-1.5 block text-sm text-muted">
+              Κωδικός
             </label>
             <input
-              id="admin-email"
-              type="email"
-              autoComplete="username"
-              className="input-field"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="admin-password" className="mb-1.5 block text-sm text-muted">
-              Password
-            </label>
-            <input
-              id="admin-password"
+              id="admin-code"
               type="password"
               autoComplete="current-password"
               className="input-field"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={code}
+              onChange={(event) => setCode(event.target.value)}
               required
             />
           </div>
@@ -80,7 +64,7 @@ export default function AdminLoginPage() {
           ) : null}
 
           <button type="submit" className="btn-primary w-full" disabled={loading}>
-            {loading ? "Σύνδεση..." : "Σύνδεση"}
+            {loading ? "Έλεγχος..." : "Είσοδος"}
           </button>
         </form>
       </div>

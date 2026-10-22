@@ -8,5 +8,5 @@ export default async function DashboardLayout({ children }: { children: React.Re
     redirect("/admin/login");
   }
 
-  return <AdminShell userEmail={session.user.email}>{children}</AdminShell>;
+  return <AdminShell>{children}</AdminShell>;
 }

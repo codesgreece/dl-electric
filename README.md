@@ -18,7 +18,7 @@ Premium futuristic website for DL Electric by Dimitris Lykos — electrical engi
 cp .env.example .env
 ```
 
-2. Set `DATABASE_URL`, `AUTH_SECRET`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD`.
+2. Set `DATABASE_URL` and `AUTH_SECRET`. Optional: set `ADMIN_CODE` to replace the built-in admin code.
 
 3. Install and prepare the database:
 
@@ -44,11 +44,12 @@ npm run dev
 | `npm run dev` | Development server |
 | `npm run build` | Production build |
 | `npm run start` | Start production server |
-| `npm run db:seed` | Seed admin user, services, projects |
+| `npm run db:seed` | Seed services, projects, and site content |
 | `npm run lint` | ESLint |
 
 ## Notes
 
-- Contact form submissions are stored in PostgreSQL and visible in Admin → Messages.
+- Admin (`/admin`) accepts a single access code and is only for uploading photos. Uploaded photos appear in the homepage gallery. Set `ADMIN_CODE` to override the built-in code without putting it in the repository.
+- Contact form submissions are stored in PostgreSQL.
 - Partner logos are generic placeholders until collaborations are confirmed.
 - Do not commit real credentials; use environment variables only.

@@ -13,6 +13,7 @@ export const NAV_LINKS = [
   { href: "#home", label: "Αρχική" },
   { href: "#services", label: "Υπηρεσίες" },
   { href: "#projects", label: "Έργα" },
+  { href: "#gallery", label: "Φωτογραφίες" },
   { href: "#about", label: "Για εμάς" },
   { href: "#certifications", label: "Πιστοποιήσεις" },
   { href: "#contact", label: "Επικοινωνία" },

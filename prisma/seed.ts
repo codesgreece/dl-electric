@@ -159,7 +159,6 @@ async function main() {
   }
 
   console.log("Seed completed.");
-  console.log(`Admin login: ${email}`);
 }
 
 main()

@@ -8,8 +8,7 @@ export const contactSchema = z.object({
 });
 
 export const loginSchema = z.object({
-  email: z.string().email("Μη έγκυρο email"),
-  password: z.string().min(6, "Ο κωδικός είναι υποχρεωτικός"),
+  code: z.string().min(8).max(200),
 });
 
 export const projectSchema = z.object({

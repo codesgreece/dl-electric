@@ -5,6 +5,7 @@ import { Stats } from "@/components/sections/Stats";
 import { Services } from "@/components/sections/Services";
 import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
+import { Gallery } from "@/components/sections/Gallery";
 import { Certifications } from "@/components/sections/Certifications";
 import { Partners } from "@/components/sections/Partners";
 import { CTABanner } from "@/components/sections/CTABanner";
@@ -14,18 +15,22 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 async function getHomeData() {
-  const [services, projects, certifications, settings] = await Promise.all([
+  const [services, projects, photos, certifications, settings] = await Promise.all([
     prisma.service.findMany({ orderBy: { sortOrder: "asc" } }),
     prisma.project.findMany({ orderBy: { sortOrder: "asc" } }),
+    prisma.galleryPhoto.findMany({
+      select: { id: true },
+      orderBy: { createdAt: "desc" },
+    }),
     prisma.certification.findMany({ orderBy: { sortOrder: "asc" } }),
     prisma.siteSettings.findUnique({ where: { id: "default" } }),
   ]);
 
-  return { services, projects, certifications, settings };
+  return { services, projects, photos, certifications, settings };
 }
 
 export default async function HomePage() {
-  const { services, projects, certifications, settings } = await getHomeData();
+  const { services, projects, photos, certifications, settings } = await getHomeData();
 
   return (
     <>
@@ -36,6 +41,7 @@ export default async function HomePage() {
         <Services services={services} />
         <About />
         <Projects projects={projects} />
+        <Gallery photos={photos} />
         <Certifications items={certifications} />
         <Partners />
         <CTABanner />
