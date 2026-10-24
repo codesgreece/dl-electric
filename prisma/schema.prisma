@@ -22,6 +22,8 @@ enum ProjectCategory {
   SMART_HOME
   INDUSTRIAL
   CCTV
+  APARTMENTS
+  SHOPS
 }
 
 model Project {

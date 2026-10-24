@@ -7,6 +7,8 @@ export const PROJECT_CATEGORY_LABELS: Record<ProjectCategory, string> = {
   SMART_HOME: "Smart Home",
   INDUSTRIAL: "Βιομηχανικά Έργα",
   CCTV: "CCTV",
+  APARTMENTS: "Διαμερίσματα",
+  SHOPS: "Καταστήματα",
 };
 
 export const NAV_LINKS = [
